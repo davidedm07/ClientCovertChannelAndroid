@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/davide/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/pre-dexed/all/debug/support-annotations-21.0.3-c54b96351a2ca6a26c5b9e2f923af5e2c3baeb74.jar" />
+    </item>
+    <item
+        jar="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/pre-dexed/all/debug/classes-e4c454e72a31f383479f15b61cd47fbbe0b774d3.jar" />
+    </item>
+    <item
+        jar="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/pre-dexed/all/debug/classes-37295a010f6c9f15b98d491d69b97bd0f6f91f24.jar" />
+    </item>
+    <item
+        jar="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/intermediates/pre-dexed/all/debug/internal_impl-21.0.3-a36e8965160f1dcb9639bf8477a9b8e0c7150938.jar" />
+    </item>
+
+</items>

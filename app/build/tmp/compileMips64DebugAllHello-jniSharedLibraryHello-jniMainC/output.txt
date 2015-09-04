@@ -1,0 +1,23 @@
+See file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/compileMips64DebugAllHello-jniSharedLibraryHello-jniMainC/output.txt for all output for compileMips64DebugAllHello-jniSharedLibraryHello-jniMainC.
+compiling client.c successful.
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c: In function 'Java_com_example_client_SendActivity_sendFromJNI':
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 1 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+                 ^
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
+ int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+     ^
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 3 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+                 ^
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
+ int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+     ^
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 4 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+                 ^
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
+ int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+     ^
+
+Finished compileMips64DebugAllHello-jniSharedLibraryHello-jniMainC, see full log file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/compileMips64DebugAllHello-jniSharedLibraryHello-jniMainC/output.txt.
