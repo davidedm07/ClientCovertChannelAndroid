@@ -1,23 +1,23 @@
 See file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/compileX86DebugAllHello-jniSharedLibraryHello-jniMainC/output.txt for all output for compileX86DebugAllHello-jniSharedLibraryHello-jniMainC.
 compiling client.c successful.
 /home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c: In function 'Java_com_example_client_SendActivity_sendFromJNI':
-/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 1 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
-     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:139:17: warning: passing argument 1 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert,nativeInterval);
                  ^
 /home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
- int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+ int createAndSendSocket(char* address, int port, char* overt, char* covert,int timing) {
      ^
-/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 3 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
-     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:139:17: warning: passing argument 3 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert,nativeInterval);
                  ^
 /home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
- int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+ int createAndSendSocket(char* address, int port, char* overt, char* covert,int timing) {
      ^
-/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:138:17: warning: passing argument 4 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
-     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+/home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:139:17: warning: passing argument 4 of 'createAndSendSocket' discards 'const' qualifier from pointer target type
+     jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert,nativeInterval);
                  ^
 /home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/src/main/jni/client.c:50:5: note: expected 'char *' but argument is of type 'const char *'
- int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+ int createAndSendSocket(char* address, int port, char* overt, char* covert,int timing) {
      ^
 
 Finished compileX86DebugAllHello-jniSharedLibraryHello-jniMainC, see full log file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/compileX86DebugAllHello-jniSharedLibraryHello-jniMainC/output.txt.

@@ -1,0 +1,4 @@
+See file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/linkMips64ReleaseAllHello-jniSharedLibrary/output.txt for all output for linkMips64ReleaseAllHello-jniSharedLibrary.
+linking libhello-jni.so successful.
+
+Finished linkMips64ReleaseAllHello-jniSharedLibrary, see full log file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/linkMips64ReleaseAllHello-jniSharedLibrary/output.txt.

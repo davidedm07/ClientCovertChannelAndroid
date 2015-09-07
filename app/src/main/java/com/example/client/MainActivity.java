@@ -119,7 +119,6 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, SendActivity.class);
                 intent.putExtra("dstAddress", editTextAddress.getText().toString());
                 intent.putExtra("dstPort", Integer.parseInt(editTextPort.getText().toString()));
-
                 startActivity(intent);
             }
 

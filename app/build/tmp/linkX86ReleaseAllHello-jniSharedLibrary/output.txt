@@ -1,0 +1,4 @@
+See file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/linkX86ReleaseAllHello-jniSharedLibrary/output.txt for all output for linkX86ReleaseAllHello-jniSharedLibrary.
+linking libhello-jni.so successful.
+
+Finished linkX86ReleaseAllHello-jniSharedLibrary, see full log file:///home/davide/AndroidStudioProjects/android-ndk/hello-jni/app/build/tmp/linkX86ReleaseAllHello-jniSharedLibrary/output.txt.

@@ -47,10 +47,10 @@ int* encode(char* message) {
     return encoded;
 
 }
-int createAndSendSocket(char* address, int port, char* overt, char* covert) {
+int createAndSendSocket(char* address, int port, char* overt, char* covert,int timing) {
     int sock;
     struct sockaddr_in addr;
-    double interval=0.1;
+    double interval=timing/1000.0;
     int timing_interval= (int) (interval*1000000);
     int i,j; // counters
     if ( (sock = socket(PF_INET, SOCK_DGRAM, 0)) < 0) {
@@ -98,7 +98,7 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert) {
 
 }
 
-jint Java_com_example_client_SendActivity_sendFromJNI( JNIEnv* env, jobject this ,jstring address, jint port,jstring overt,jstring covert) {
+jint Java_com_example_client_SendActivity_sendFromJNI( JNIEnv* env, jobject this ,jstring address, jint port,jstring overt,jstring covert,jint interval) {
 #if defined(__arm__)
     #if defined(__ARM_ARCH_7A__)
       #if defined(__ARM_NEON__)
@@ -135,7 +135,8 @@ jint Java_com_example_client_SendActivity_sendFromJNI( JNIEnv* env, jobject this
     const char *nativeOvert = (*env)->GetStringUTFChars(env, overt, 0);
     const char *nativeCovert = (*env)->GetStringUTFChars(env, covert, 0);
     int nativePort=(int)port;
-    jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert);
+    int nativeInterval=(int)interval;
+    jint result=createAndSendSocket(nativeAddress,nativePort,nativeOvert,nativeCovert,nativeInterval);
     return result;
 }
 

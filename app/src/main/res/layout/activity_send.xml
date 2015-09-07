@@ -64,4 +64,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="56dp" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/timing"
+        android:layout_below="@+id/covert"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="timing_interval(milliseconds)"
+        android:layout_alignRight="@+id/covert"
+        android:layout_alignEnd="@+id/covert" />
+
 </RelativeLayout>

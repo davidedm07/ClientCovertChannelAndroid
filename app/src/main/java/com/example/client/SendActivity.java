@@ -28,6 +28,7 @@ public class SendActivity extends Activity {
     EditText overtMessage;
     EditText covertMessage;
     TextView response;
+    EditText timingInterval;
 
     static {
         System.loadLibrary("hello-jni");
@@ -46,6 +47,7 @@ public class SendActivity extends Activity {
         overtMessage=(EditText)findViewById(R.id.overt);
         covertMessage=(EditText)findViewById(R.id.covert);
         response=(TextView)findViewById(R.id.response);
+        timingInterval=(EditText)findViewById(R.id.timing);
 
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,124 +70,13 @@ public class SendActivity extends Activity {
     }
 
     public void sendMessage() {
-        this.sendFromJNI(this.dstAddress, this.dstPort,overtMessage.getText().toString(),covertMessage.getText().toString());
+        this.sendFromJNI(this.dstAddress, this.dstPort,overtMessage.getText().toString(),covertMessage.getText().toString(),Integer.parseInt(timingInterval.getText().toString()));
         this.response.setText("Message Sent");
 
     }
 
 
-   /* public class SendTask extends AsyncTask<Void, Void, Void> {
-        private String address;
-        private int port;
-        private String overt;
-        private String covert;
-        String res="";
-
-
-        public SendTask(String dstAddress,int dstPort,String overt,String covertMessage) {
-            this.address=dstAddress;
-            this.port=dstPort;
-            this.overt=overt;
-            this.covert=covertMessage;
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            DatagramSocket socket;
-            byte[] sendData;
-            int j=0;
-            long timing_interval=900;
-            try {
-                socket = new DatagramSocket();
-                InetAddress ipAddress = InetAddress.getByName(this.address);
-                int[] encodedOvert = encode(this.overt);
-                int[] encodedCovert=encode(this.covert);
-
-                //invio lunghezza del messaggio al server
-                ByteArrayOutputStream b1=new ByteArrayOutputStream();
-                DataOutputStream d1=new DataOutputStream(b1);
-                d1.writeInt(encodedOvert.length);
-                d1.writeLong(timing_interval);
-                d1.close();
-                sendData=b1.toByteArray();
-                DatagramPacket sendPacketLength = new DatagramPacket(sendData, sendData.length, ipAddress, port);
-                socket.send(sendPacketLength);
-
-                for (int i = 0; i < encodedOvert.length; i++) {
-                    //sendFromJNI(this.address,this.port,encodedCovert[0]);
-                    ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                    DataOutputStream daos=new DataOutputStream(baos);
-                    daos.writeInt(encodedOvert[i]);
-                    daos.close();
-                    sendData=baos.toByteArray();
-                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
-
-                    if (j<encodedCovert.length) {
-                        if (encodedCovert[j] == 0) {
-                            TimeUnit.MILLISECONDS.sleep(timing_interval);
-                            i--;
-                        } else if (encodedCovert[j] == 1) {
-                            TimeUnit.MILLISECONDS.sleep(timing_interval/2);
-                            socket.send(sendPacket);
-                            TimeUnit.MILLISECONDS.sleep(timing_interval/2);
-
-                        }
-                        j++;
-                    }
-                    else
-                        socket.send(sendPacket);
-                }
-            }
-            catch (UnknownHostException e) {
-                res+= e.toString();
-            } catch (IOException e) {
-                res+= e.toString();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            res = "Message sent";
-            return null;
-        }
-
-
-        @Override
-        protected void onPostExecute(Void result) {
-            response.setText(res);
-        }
-
-        // codifica un carattere in binario
-        public int[] encodeChar (char c) {
-            int[] output=new int[8];
-            int i;
-            for (i=0;i<8;i++) {
-                output[7-i]=((c>>i)& 1);
-            }
-            return output;
-
-        }
-
-
-        public int[] encode(String message) {
-            int[] encoded = new int[message.length()*8];
-            int i,j;
-            int pos=0;
-            int[] single_char;
-            for (i=0;i<message.length();i++) {
-                single_char=encodeChar(message.charAt(i));
-                for(j=0;j<8;j++)
-                    encoded[j+pos]=single_char[j];
-                pos= pos+8; // per ricordare la posizione corrente nell'array finale
-            }
-            return encoded;
-
-        }
-        public native int sendFromJNI(String address, int port, int data);
-
-
-    }*/
-
-    public native int sendFromJNI(String address, int port, String overt,String covert);
+    public native int sendFromJNI(String address, int port, String overt,String covert,int intervald);
 
 
     @Override
