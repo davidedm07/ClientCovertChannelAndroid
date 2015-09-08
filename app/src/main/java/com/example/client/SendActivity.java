@@ -76,7 +76,7 @@ public class SendActivity extends Activity {
     }
 
 
-    public native int sendFromJNI(String address, int port, String overt,String covert,int intervald);
+    public native int sendFromJNI(String address, int port, String overt,String covert,int interval);
 
 
     @Override

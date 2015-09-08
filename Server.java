@@ -79,7 +79,7 @@ class UDPServer {
 				list.add(current);
 				System.out.println("RECEIVED: "+ current + " "+ new DecimalFormat("#.##########").format(seconds));
 				if(diff>interval/2 && diff < interval) {
-						if(diff>(interval/2+interval/20))
+						if(diff>(interval/2+interval/5))
 							diff=interval;
 						else
 							diff=interval/2;
