@@ -1,7 +1,6 @@
 package com.example.client;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,14 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class SendActivity extends Activity {
@@ -68,9 +60,8 @@ public class SendActivity extends Activity {
 
 
     }
-
     public void sendMessage() {
-        this.sendFromJNI(this.dstAddress, this.dstPort,overtMessage.getText().toString(),covertMessage.getText().toString(),Integer.parseInt(timingInterval.getText().toString()));
+        int value=this.sendFromJNI(this.dstAddress, this.dstPort,overtMessage.getText().toString(),covertMessage.getText().toString(),Integer.parseInt(timingInterval.getText().toString()));
         this.response.setText("Message Sent");
 
     }

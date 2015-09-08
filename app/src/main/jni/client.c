@@ -53,6 +53,10 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
     double interval=timing/1000.0;
     int timing_interval= (int) (interval*1000000);
     int i,j; // counters
+    int cont=0; //number of covert bits sent
+    char sync_message[6];
+    char sync[5];
+    strcpy(sync,"SYNC");
     if ( (sock = socket(PF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("Socket creation error");
         return -1;
@@ -81,10 +85,23 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
                 usleep((useconds_t) (timing_interval/2));
                 sendto(sock, &encodedOvert[i],sizeof(int), 0, (struct sockaddr *)&addr,sizeof(addr));
                 usleep((useconds_t) (timing_interval/2));
+                cont++;
+                // ogni volta che invio un pacchetto comunico al server quanti bit covert
+                // ho inviato prima dell'1, sincronizzo i tempi
+                char c=cont+'0';
+                int len= (int) strlen(sync);
+                strcpy(sync_message,sync);
+                sync_message[len]=c;
+                sync_message[len+1]= '\0';
+                sendto(sock,&sync_message,sizeof(sync_message),0,(struct sockaddr*)&addr,sizeof(addr));
+                free(sync_message);
+                cont=0; // riparte il contatore di cont
+
             }
             else if (encodedCovert[j]==0) {
                 usleep((useconds_t) timing_interval);
                 i--;
+                cont++;
             }
             j++;
         }
@@ -94,7 +111,6 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
     }
     closeSocket(sock);
     return 1;
-
 
 }
 
