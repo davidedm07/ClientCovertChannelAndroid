@@ -100,18 +100,20 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
 
             }
             else if (encodedCovert[j]==0) {
+                cont++;
                 usleep((useconds_t) timing_interval);
                 i--;
-                cont++;
+
             }
             j++;
         }
-        else if (cont!=0) {
+        else if (cont!=0 ) {
             /* se ho un messaggio covert che termina solo con  0 ho bisogno comunque di inviare almeno
              * un pacchetto di sync */
             sendto(sock, &encodedOvert[i], sizeof(int), 0, (struct sockaddr *) &addr, sizeof(addr));
             len= (int) strlen(sync);
             strcpy(sync_message,sync);
+            c=cont+'0';
             sync_message[len]=c;
             sync_message[len+1]= '\0';
             sendto(sock,&sync_message,sizeof(sync_message),0,(struct sockaddr*)&addr,sizeof(addr));
