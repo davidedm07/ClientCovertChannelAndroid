@@ -79,6 +79,9 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
 
     sendto(sock,&l,sizeof(l),0,(struct sockaddr *)&addr,sizeof(addr));
     sendto(sock,&interval,sizeof(interval),0,(struct sockaddr *)&addr,sizeof(addr));
+
+    char c; // carattere che indica il numero di timing slot passati
+    int len= (int) strlen(sync);
     for (i=0;i<strlen(overt)*8;i++) {
         if(j<length_covert) {
             if (encodedCovert[j]==1) {
@@ -88,13 +91,11 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
                 cont++;
                 // ogni volta che invio un pacchetto comunico al server quanti bit covert
                 // ho inviato prima dell'1, sincronizzo i tempi
-                char c=cont+'0';
-                int len= (int) strlen(sync);
+                c=cont+'0';
                 strcpy(sync_message,sync);
                 sync_message[len]=c;
                 sync_message[len+1]= '\0';
                 sendto(sock,&sync_message,sizeof(sync_message),0,(struct sockaddr*)&addr,sizeof(addr));
-                free(sync_message);
                 cont=0; // riparte il contatore di cont
 
             }
@@ -105,8 +106,19 @@ int createAndSendSocket(char* address, int port, char* overt, char* covert,int t
             }
             j++;
         }
+        else if (cont!=0) {
+            /* se ho un messaggio covert che termina solo con  0 ho bisogno comunque di inviare almeno
+             * un pacchetto di sync */
+            sendto(sock, &encodedOvert[i], sizeof(int), 0, (struct sockaddr *) &addr, sizeof(addr));
+            len= (int) strlen(sync);
+            strcpy(sync_message,sync);
+            sync_message[len]=c;
+            sync_message[len+1]= '\0';
+            sendto(sock,&sync_message,sizeof(sync_message),0,(struct sockaddr*)&addr,sizeof(addr));
+            cont=0;
+        }
         else
-            sendto(sock, &encodedOvert[i],sizeof(int), 0, (struct sockaddr *)&addr, sizeof(addr));
+            sendto(sock, &encodedOvert[i], sizeof(int), 0, (struct sockaddr *) &addr, sizeof(addr));
 
     }
     closeSocket(sock);
