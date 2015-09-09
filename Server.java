@@ -58,7 +58,7 @@ class UDPServer {
 			buffer.order(ByteOrder.LITTLE_ENDIAN);
 			double interval= buffer.getDouble();
 			System.out.println("INTERVAL=" +interval);
-            int zeros=0;
+			int zeros=0;
 		// pacchetto di fine comunicazione o fornisco lunghezza messaggio?
 			while(j<length) {
 				byte[] single_bit=new byte[8];
@@ -68,7 +68,6 @@ class UDPServer {
 				long end=System.nanoTime();
 				long difference=end-init;
 				double seconds = (double)difference / 1000000000;
-				double diff=seconds-interval/2;
 				single_bit =receivePacket.getData();
 				if(j>=8 && j%8==0)
 					System.out.println();
@@ -78,20 +77,33 @@ class UDPServer {
 				int current=buffer.getInt();
 				list.add(current);
 				System.out.println("RECEIVED: "+ current + " "+ new DecimalFormat("#.##########").format(seconds));
+				if (seconds>interval/4) {
+					byte[] syncro= new byte[512];
+					DatagramPacket sync= new DatagramPacket(syncro,syncro.length);
+					serverSocket.receive(sync);
+					String syn = new String(sync.getData(),0,sync.getLength(),"UTF-8");
+					System.out.println(syn);
+					
+					int previous_covert=Integer.parseInt(syn.charAt(syn.length()-2)+"");
+					seconds=interval*previous_covert;
+				}
+
+				
+				double diff=seconds-interval/2;
 				if(diff>interval/2 && diff < interval) {
-						if(diff>(interval/2+interval/5))
-							diff=interval;
-						else
-							diff=interval/2;
-					}
-						
+					if(diff>(interval/2+interval/5))
+						diff=interval;
+					else
+						diff=interval/2;
+				}
+
 				if (diff>0){
 					zeros=(int)(diff/interval);
 					for (int z=0; z<zeros;z++)
 						covert.add(0);
 					covert.add(1);
 					System.out.print("DIFF= "+diff);
-				System.out.println(" zeros= "+ zeros);
+					System.out.println(" zeros= "+ zeros);
 				}
 				j++;
 			}
