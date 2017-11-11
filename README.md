@@ -14,11 +14,13 @@ Getting Started
 4. Import the project and export the app on a mobile device.
 5. Run The server and start the communication.
 
+Look the powerpoint presentation to see the functioning of the algortithm.
+
 Screenshots
 -----------
-![screenshot](screenshot1.png)
-![screenshot](screenshot2.png)
-![screenshot](screenshot3.png)
+![screenshot1](screenshot1.PNG)
+![screenshot2](screenshot2.PNG)
+![screenshot3](screenshot3.PNG)
 
 
 License
